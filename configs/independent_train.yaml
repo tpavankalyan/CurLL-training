@@ -6,12 +6,14 @@ seed: 42                                          # Seed for reproducing the res
 
 # Data related settings
 data:
-  dataset_name: roneneldan/TinyStories            # Huggingface dataset name
+  dataset_names:                                  # Names of dataset, shuffled and shown in random order
+    - Pavankalyan/stage0_train
+    - Pavankalyan/stage1_train           
   split: train                      
   max_length: 1024
   column_name: 'text'
   streaming: true
-  dataset_size: 49188244
+  dataset_size: 49188244                          # Sum of all datasets sizes
 
 # Training related settings
 training:

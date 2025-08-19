@@ -9,7 +9,7 @@ from transformers import (
     DataCollatorForLanguageModeling,
     AutoConfig
 )
-from datasets import load_dataset, load_from_disk
+from datasets import load_dataset, interleave_datasets
 import numpy as np
 import math
 import argparse
@@ -74,7 +74,7 @@ def main():
     run_dir         = config.get('run_dir')
     seed            = config.get('seed', 42)
     # Data related parameters
-    dataset_name    = config['data']['dataset_name']
+    dataset_names   = config['data'].get('dataset_names', [])
     split           = config['data'].get('split', 'train')
     max_length      = config['data'].get('max_length', 2048)
     column_name     = config['data'].get('column_name', 'text')
@@ -117,9 +117,18 @@ def main():
     tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast=True)
     added_tokens = tokenizer.add_tokens(['<|pad|>', '<|system|>', '<|user|>', '<|assistant|>'], special_tokens=True)
     tokenizer.pad_token = '<|pad|>'
+    
+    datasets_streamed = [
+            load_dataset(name, split=split, streaming=True)
+            for name in dataset_names
+            ]
+    if len(datasets_streamed) == 1:
+        shuffled_dataset = datasets_streamed[0]
+    else:
+        combined_dataset = interleave_datasets(datasets_streamed, probabilities=None, seed=seed)
+        shuffled_dataset = combined_dataset.shuffle(seed=seed, buffer_size=10_000)
+    ds = shuffled_dataset.map(tokenize_data)
 
-
-    ds = load_dataset(dataset_name, split=split, streaming=True)
     ds = ds.map(
         lambda batch: tokenize_data(batch, tokenizer, max_length, column_name=column_name),
         batched=True,
