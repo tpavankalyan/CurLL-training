@@ -16,6 +16,7 @@ This repository provides a comprehensive framework for training, evaluating, and
   - [6. Collecting Results](#6-collecting-results)
 - [Configuration](#configuration)
 - [Dependencies](#dependencies)
+- [Pre-trained Models](#pre-trained-models)
 
 ## Project Overview
 
@@ -158,3 +159,29 @@ The `run_train.py` script uses a YAML configuration file to specify the training
 ## Dependencies
 
 The required dependencies are listed in the `requirements.txt` file.
+
+## Pre-trained Models
+
+The following pre-trained models are available on the Hugging Face Hub:
+
+### Independent Models
+
+-   [Pavankalyan/stage0](https://huggingface.co/Pavankalyan/stage0)
+-   [Pavankalyan/stage1](https://huggingface.co/Pavankalyan/stage1)
+-   [Pavankalyan/stage2](https://huggingface.co/Pavankalyan/stage2)
+-   [Pavankalyan/stage3](https://huggingface.co/Pavankalyan/stage3)
+-   [Pavankalyan/stage4](https://huggingface.co/Pavankalyan/stage4)
+
+### Joint Models
+
+-   [Pavankalyan/stage01](https://huggingface.co/Pavankalyan/stage01)
+-   [Pavankalyan/stage012](https://huggingface.co/Pavankalyan/stage012)
+-   [Pavankalyan/stage0123](https://huggingface.co/Pavankalyan/stage0123)
+-   [Pavankalyan/stage01234](https://huggingface.co/Pavankalyan/stage01234)
+
+### Continual Models
+
+-   [Pavankalyan/stage0_1](https://huggingface.co/Pavankalyan/stage0_1)
+-   [Pavankalyan/stage0_1_2](https://huggingface.co/Pavankalyan/stage0_1_2)
+-   [Pavankalyan/stage0_1_2_3](https://huggingface.co/Pavankalyan/stage0_1_2_3)
+-   [Pavankalyan/stage0_1_2_3_4](https://huggingface.co/Pavankalyan/stage0_1_2_3_4)
