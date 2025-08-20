@@ -166,18 +166,18 @@ The following pre-trained models are available on the Hugging Face Hub:
 
 ### Independent Models
 
--   [Pavankalyan/stage0](https://huggingface.co/Pavankalyan/stage0)
--   [Pavankalyan/stage1](https://huggingface.co/Pavankalyan/stage1)
--   [Pavankalyan/stage2](https://huggingface.co/Pavankalyan/stage2)
--   [Pavankalyan/stage3](https://huggingface.co/Pavankalyan/stage3)
--   [Pavankalyan/stage4](https://huggingface.co/Pavankalyan/stage4)
+-   [Pavankalyan/stage0](https://huggingface.co/Pavankalyan/stage0_training)
+-   [Pavankalyan/stage1](https://huggingface.co/Pavankalyan/stage1_training)
+-   [Pavankalyan/stage2](https://huggingface.co/Pavankalyan/stage2_training)
+-   [Pavankalyan/stage3](https://huggingface.co/Pavankalyan/stage3_training)
+-   [Pavankalyan/stage4](https://huggingface.co/Pavankalyan/stage4_training)
 
 ### Joint Models
 
--   [Pavankalyan/stage01](https://huggingface.co/Pavankalyan/stage01)
--   [Pavankalyan/stage012](https://huggingface.co/Pavankalyan/stage012)
--   [Pavankalyan/stage0123](https://huggingface.co/Pavankalyan/stage0123)
--   [Pavankalyan/stage01234](https://huggingface.co/Pavankalyan/stage01234)
+-   [Pavankalyan/stage01](https://huggingface.co/Pavankalyan/stage01_training)
+-   [Pavankalyan/stage012](https://huggingface.co/Pavankalyan/stage012_training)
+-   [Pavankalyan/stage0123](https://huggingface.co/Pavankalyan/stage0123_training)
+-   [Pavankalyan/stage01234](https://huggingface.co/Pavankalyan/stage01234_training)
 
 ### Continual Models
 
