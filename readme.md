@@ -1,6 +1,6 @@
 # CurLL-v0: A Framework for Training and Evaluating Continual Language Models
 
-This repository provides a comprehensive framework for training, evaluating, and analyzing Continual language models (LLMs). The workflow is designed to be modular, allowing users to easily train models, run inference, evaluate performance, and collect results.
+This repository provides a comprehensive framework for training, evaluating, and analyzing Continual language models.
 
 ## Table of Contents
 
@@ -20,18 +20,18 @@ This repository provides a comprehensive framework for training, evaluating, and
 
 ## Project Overview
 
-This project provides a set of scripts to automate the process of training and evaluating LLMs. The key features include:
+This project provides a set of scripts for training and evaluating LMs. The key features include:
 
 -   **Training:** A flexible training script based on Hugging Face's `transformers` library.
 -   **Inference:** A script for running batched inference with a trained model.
--   **Evaluation:** A script for evaluating the model's outputs using a separate LLM.
+-   **Evaluation:** A script for evaluating the model's outputs using a separate LM.
 -   **Results Collection:** A script for collecting and organizing the evaluation results in a Google Sheet.
 
 ## Workflow
 
 The workflow is divided into the following steps:
 
-1.  **Training:** Train a Continual language model using `run_train.py`.
+1.  **Training:** Train a language model using `run_train.py`.
 2.  **Uploading to Hugging Face Hub:** Upload the trained model to the Hugging Face Hub using `upload_model_to_hf.py`.
 3.  **Batched Inference:** Run batched inference with the trained model using `batched_inference.py`.
 4.  **Preparing Seed Data for Evaluation:** Prepare the seed data for evaluation using `seed_for_eval.py`.
@@ -69,7 +69,7 @@ The workflow is divided into the following steps:
 
 ### 1. Training
 
-The `run_train.py` script is used to train a Continual language model. It takes a single command-line argument:
+The `run_train.py` script is used to train a language model. It takes a single command-line argument:
 
 -   `--config`: The path to the configuration file (default: `config.yaml`).
 
