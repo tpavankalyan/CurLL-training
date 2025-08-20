@@ -61,7 +61,7 @@ The workflow is divided into the following steps:
     2.  Create a new project.
     3.  Enable the Google Sheets API and the Google Drive API.
     4.  Create a service account and download the JSON key file.
-    5.  Rename the JSON key file to `agentdalal-6ea56a9e5ecc.json` and place it in the root directory of the project.
+    5.  Rename the JSON key file to `sheets_secret.json` and place it in the root directory of the project.
 
     **Note:** Be careful not to expose your service account credentials. Add the JSON key file to your `.gitignore` file to prevent it from being committed to version control.
 

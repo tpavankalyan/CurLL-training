@@ -21,11 +21,11 @@ def setup_google_sheets():
         "https://spreadsheets.google.com/feeds",
         "https://www.googleapis.com/auth/drive"
     ]
-    # Note: This requires a service account JSON file named 'agentdalal-6ea56a9e5ecc.json'.
+    # Note: This requires a service account JSON file named 'sheets_secret.json'.
     # You will need to create your own service account and download the JSON key file.
     # See the README.md for more information.
     creds = Credentials.from_service_account_file(
-        "agentdalal-6ea56a9e5ecc.json", 
+        "sheets_secret.json", 
         scopes=scope
     )
     client = gspread.authorize(creds)
