@@ -137,6 +137,13 @@ The `llm_rating.py` script is used to evaluate the model's outputs. It takes the
 python llm_rating.py --model_path Pavankalyan/my-model --data_type instruct --split_type val --stage 0
 ```
 
+By default the script uses `Gemma3-27B-IT`. If the vllm is giving error, then create a seaparate environment specifcally for this file and try the following setup:
+```bash
+pip install vllm==0.9.1 --extra-index-url https://download.pytorch.org/whl/cu128
+pip install -U "ray[data,train,tune,serve]"
+pip install git+https://github.com/huggingface/transformers@v4.49.0-Gemma-3
+```
+
 ### 6. Collecting Results
 
 The `collect_results.py` script is used to collect the evaluation results and upload them to a Google Sheet. It takes the following command-line arguments:
