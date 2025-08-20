@@ -9,17 +9,24 @@ from packaging.version import Version
 from ray.data.llm import build_llm_processor, vLLMEngineProcessorConfig
 import argparse
 
+# This script evaluates the outputs of a trained model using a separate LLM.
+# It uses the vLLM engine for efficient inference and Ray for distributed processing.
+# The script is designed to be run from the command line.
+
 # ========== HELPERS ==========
 def load_json(file_path):
+    """Loads a JSON file."""
     with open(file_path, "r", encoding='utf-8') as f:
         return json.load(f)
 
 def load_data(file_path):
+    """Loads data from a pickle file."""
     with open(file_path, "rb") as f:
         data = pickle.load(f)
     return data
 
 def load_jsonl(file_path):
+    """Loads a JSONL file."""
     data = []
     with open(file_path, 'r', encoding='utf-8') as f:
         for line in f:
@@ -28,6 +35,7 @@ def load_jsonl(file_path):
     return data
 
 def log_error(e, idx, row):
+    """Logs an error message."""
     logging.error(f"Error at index {idx}: {e}\nRow: {row}")
 
 if __name__ == "__main__":
@@ -46,6 +54,7 @@ if __name__ == "__main__":
     model_name = model_name.replace('/', '_').replace('-', '_')
     
     # ========== CONFIGURATION ==========
+    # Note: The paths are hardcoded. You will need to change these to match your environment.
     seed_data_path = f"/datadrive/pavan/az_storage/CL_results/seed/stage{stage}/{data_type}/{split_type}/{model_name}.pkl"
     prompt_path = f"/datadrive/pavan/az_storage/CL_results/{data_type}_prompt.json"
     output_path = f"/datadrive/pavan/az_storage/CL_results/outputs/stage{stage}/{data_type}/{split_type}/{model_name}"

@@ -12,11 +12,18 @@ import gspread
 from google.oauth2.service_account import Credentials
 import time
 
+# This script collects the results from the LLM rating script and uploads them to a Google Sheet.
+# It is designed to be run from the command line.
+
 def setup_google_sheets():
+    """Sets up the Google Sheets API client."""
     scope = [
         "https://spreadsheets.google.com/feeds",
         "https://www.googleapis.com/auth/drive"
     ]
+    # Note: This requires a service account JSON file named 'agentdalal-6ea56a9e5ecc.json'.
+    # You will need to create your own service account and download the JSON key file.
+    # See the README.md for more information.
     creds = Credentials.from_service_account_file(
         "agentdalal-6ea56a9e5ecc.json", 
         scopes=scope
@@ -25,6 +32,7 @@ def setup_google_sheets():
     return client
 
 def update_google_sheet(client, spreadsheet_name, worksheet_name, results_df, model_name):
+    """Updates a Google Sheet with the results."""
     try:
         spreadsheet = client.open(spreadsheet_name)
         try:
@@ -178,11 +186,13 @@ def flatten_parsed_fields(example):
 
 
 def get_result_df(args):
+    """Loads the results from the Parquet files and merges them with the original dataset."""
     stage = args.stage
     data_type = args.data_type
     split_type = args.split_type
     model_name = os.path.basename(args.model_path.rstrip('/'))
     model_name = model_name.replace('/', '_').replace('-', '_')
+    # Note: The path to the results is hardcoded. You will need to change this to match your environment.
     res_path = f"/datadrive/pavan/az_storage/CL_results/outputs/stage{stage}/{data_type}/{split_type}/{model_name}"
     hf_path = f"Pavankalyan/stage{stage}_{data_type}_eval"
     hf_df = load_dataset(
@@ -294,9 +304,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-    
-    
-    
-    
-    

@@ -6,7 +6,11 @@ from datasets import load_dataset
 from transformers import AutoTokenizer, AutoModelForCausalLM
 from huggingface_hub import HfFolder
 
+# This script runs batched inference using a trained model and pushes the results to the Hugging Face Hub.
+# It is designed to be run from the command line.
+
 def run_inference(args):
+    """Runs batched inference and pushes the results to the Hugging Face Hub."""
     print(f"Loading model from {args.model_path}...")
     tokenizer = AutoTokenizer.from_pretrained(args.model_path, use_fast=True)
     device='cuda'
@@ -19,11 +23,14 @@ def run_inference(args):
         tokenizer.pad_token = tokenizer.eos_token
     tokenizer.padding_side = "left"
     
+    # --- Load dataset ---
+    # Note: The dataset name is hardcoded. You may need to change this.
     dataset_name = f"Pavankalyan/stage{args.stage}_{args.data_type}_eval"
 
     dataset = load_dataset(dataset_name, split=args.split_type)
 
     def generate_in_batch(batch):
+        """Generates text in batches."""
         prompts = batch[args.column_name]
         inputs = tokenizer(
             prompts, 

@@ -18,7 +18,11 @@ from torch.optim import AdamW
 from transformers import get_scheduler
 from tqdm import tqdm
 
+# This script trains a causal language model using the Hugging Face transformers library.
+# It is designed to be run from the command line and configured via a YAML file.
+
 def set_seed(seed):
+    """Sets the seed for reproducibility."""
     torch.manual_seed(seed)
     if torch.cuda.is_available():
         torch.cuda.manual_seed_all(seed)
@@ -28,10 +32,12 @@ def set_seed(seed):
     torch.backends.cudnn.benchmark = False
 
 def load_config(path):
+    """Loads a YAML configuration file."""
     with open(path, 'r') as f:
         return yaml.safe_load(f)
     
 def tokenize_data(batch, tokenizer, max_length, column_name='text'):
+    """Tokenizes a batch of data."""
     texts = batch[column_name]
     out = tokenizer(
         texts,
@@ -44,6 +50,7 @@ def tokenize_data(batch, tokenizer, max_length, column_name='text'):
     return out
 
 def initialize_model_weights(model, init_method='xavier_uniform'):
+    """Initializes the model weights."""
     for name, param in model.named_parameters():
         if param.dim() > 1:
             if 'embed' in name.lower():
@@ -65,9 +72,14 @@ def initialize_model_weights(model, init_method='xavier_uniform'):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='config.yaml')
+    # --- Parse command-line arguments ---
+    parser = argparse.ArgumentParser(description="Train a causal language model.")
+    parser.add_argument('--config', type=str, default='config.yaml', help="Path to the configuration file.")
     args = parser.parse_args()
+
+    # --- Load configuration ---
+    # The configuration file contains all the parameters for the training run.
+    # See `config.yaml` for an example.
     config = load_config(args.config)
     model_name      = config.get('model_name')
     run_name        = config.get('run_name')

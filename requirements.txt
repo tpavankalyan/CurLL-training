@@ -1,0 +1,14 @@
+torch
+transformers
+datasets
+numpy
+pyyaml
+tqdm
+ray
+pandas
+gspread
+google-auth-oauthlib
+huggingface_hub
+packaging
+vllm
+pyarrow

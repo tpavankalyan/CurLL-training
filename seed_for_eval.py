@@ -3,7 +3,12 @@ import pickle
 import argparse
 import os
 
+# This script prepares the seed data for the evaluation process.
+# It loads a dataset from the Hugging Face Hub, processes it, and saves it as a pickle file.
+# The script is designed to be run from the command line.
+
 def prepare_seed_csqa(stage, split_type, model_name, root_dir):
+    """Prepares the seed data for the CSQA dataset."""
     ds = load_dataset(f"Pavankalyan/stage{stage}_{data_type}_eval_results", split=split_type)
     seeds = []
     for i in range(len(ds)):
@@ -24,6 +29,7 @@ def prepare_seed_csqa(stage, split_type, model_name, root_dir):
         pickle.dump(seeds, f)
 
 def prepare_seed_cqa(stage, split_type, model_name, root_dir):
+    """Prepares the seed data for the CQA dataset."""
     ds = load_dataset(f"Pavankalyan/stage{stage}_cqa_eval_results", split=split_type)
     seeds = []
     for i in range(len(ds)):
@@ -40,6 +46,7 @@ def prepare_seed_cqa(stage, split_type, model_name, root_dir):
         pickle.dump(seeds, f)
         
 def prepare_seed_ir(stage, split_type, model_name, root_dir):
+    """Prepares the seed data for the Instruct dataset."""
     ds = load_dataset(f"Pavankalyan/stage{stage}_instruct_eval_results", split=split_type)
     seeds = []
     for i in range(len(ds)):
@@ -64,6 +71,7 @@ if __name__ == '__main__':
     parser.add_argument("--root_dir", type=str, default="/datadrive/pavan/az_storage/CL_results/seed", help="Root directory for saving seeds.")
     args = parser.parse_args()
 
+    # Note: The root directory is hardcoded. You may need to change this to match your environment.
     root_dir = args.root_dir
     stage = args.stage
     model_name = args.model_path.split("/")[-1].replace('/', '_').replace('-', '_')
@@ -82,7 +90,3 @@ if __name__ == '__main__':
         prepare_seed_csqa(stage, split_type, model_name, root_dir)
     else:
         raise ValueError(f"Unknown data type: {data_type}")
-        
-        
-    
-    

@@ -1,0 +1,54 @@
+# This is a sample configuration file for the run_train.py script.
+# You can use this as a template to create your own configurations.
+
+# --- General parameters ---
+model_name: "gpt2"  # The name of the model to use from the Hugging Face Hub.
+run_name: "my_test_run"  # A name for the training run.
+run_dir: "/path/to/output"  # The directory where the model checkpoints will be saved.
+seed: 42  # The random seed for reproducibility.
+
+# --- Data related parameters ---
+data:
+  dataset_names: ["wikitext"]  # A list of dataset names to use from the Hugging Face Hub.
+  split: "train"  # The dataset split to use.
+  max_length: 1024  # The maximum sequence length.
+  column_name: "text"  # The name of the column in the dataset that contains the text.
+  dataset_size: 10000  # The number of instances to use from the dataset.
+
+# --- Training related parameters ---
+training:
+  pretrain_from_scratch: false  # Whether to pretrain the model from scratch.
+  init_method: "xavier_uniform"  # The weight initialization method to use.
+  lr: 3e-4  # The learning rate.
+  weight_decay: 0.01  # The weight decay.
+  eps: 1e-8  # The epsilon value for the AdamW optimizer.
+  beta1: 0.9  # The beta1 value for the AdamW optimizer.
+  beta2: 0.98  # The beta2 value for the AdamW optimizer.
+  batch_size: 8  # The batch size.
+  gradient_accumulation_steps: 1  # The number of gradient accumulation steps.
+  epochs: 1  # The number of training epochs.
+  bf16: false  # Whether to use bfloat16 precision.
+  fp16: true  # Whether to use float16 precision.
+  ddp_find_unused_parameters: false  # Whether to find unused parameters in DDP.
+  max_grad_norm: 1.0  # The maximum gradient norm.
+  dataloader_drop_last: true  # Whether to drop the last batch in the dataloader.
+
+# --- Lr scheduler related parameters ---
+scheduler:
+  name: "linear"  # The name of the learning rate scheduler.
+  warmup_ratio: 0.1  # The warmup ratio for the learning rate scheduler.
+  num_cycles: 0.5  # The number of cycles for the cosine scheduler.
+  decay_ratio: 0.1  # The decay ratio for the learning rate scheduler.
+  warmup_type: "linear"  # The warmup type for the learning rate scheduler.
+  decay_type: "linear"  # The decay type for the learning rate scheduler.
+  min_lr_ratio: 0.1  # The minimum learning rate ratio.
+
+# --- logging and other parameters ---
+logging:
+  overwrite_output_dir: true  # Whether to overwrite the output directory.
+  save_steps_ratio: 0.1  # The ratio of training steps at which to save the model.
+  save_total_limit: 2  # The total number of checkpoints to save.
+  logging_steps: 1  # The number of steps at which to log the training metrics.
+  report_to: "wandb"  # The reporting tool to use (e.g., "wandb", "tensorboard").
+  save_strategy: "epoch"  # The save strategy to use.
+  logging_strategy: "steps"  # The logging strategy to use.
