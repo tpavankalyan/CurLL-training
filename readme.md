@@ -1,6 +1,6 @@
-# CurLL-v0: A Framework for Training and Evaluating Causal Language Models
+# CurLL-v0: A Framework for Training and Evaluating Continual Language Models
 
-This repository provides a comprehensive framework for training, evaluating, and analyzing causal language models (LLMs). The workflow is designed to be modular, allowing users to easily train models, run inference, evaluate performance, and collect results.
+This repository provides a comprehensive framework for training, evaluating, and analyzing Continual language models (LLMs). The workflow is designed to be modular, allowing users to easily train models, run inference, evaluate performance, and collect results.
 
 ## Table of Contents
 
@@ -31,7 +31,7 @@ This project provides a set of scripts to automate the process of training and e
 
 The workflow is divided into the following steps:
 
-1.  **Training:** Train a causal language model using `run_train.py`.
+1.  **Training:** Train a Continual language model using `run_train.py`.
 2.  **Uploading to Hugging Face Hub:** Upload the trained model to the Hugging Face Hub using `upload_model_to_hf.py`.
 3.  **Batched Inference:** Run batched inference with the trained model using `batched_inference.py`.
 4.  **Preparing Seed Data for Evaluation:** Prepare the seed data for evaluation using `seed_for_eval.py`.
@@ -69,7 +69,7 @@ The workflow is divided into the following steps:
 
 ### 1. Training
 
-The `run_train.py` script is used to train a causal language model. It takes a single command-line argument:
+The `run_train.py` script is used to train a Continual language model. It takes a single command-line argument:
 
 -   `--config`: The path to the configuration file (default: `config.yaml`).
 
