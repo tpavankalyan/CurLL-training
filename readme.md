@@ -1,4 +1,4 @@
-# CurLL-v0: A Framework for Training and Evaluating Continual Language Models
+# CurLL-training
 
 This repository provides a comprehensive framework for training, evaluating, and analyzing Continual language models.
 

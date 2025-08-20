@@ -18,7 +18,7 @@ from torch.optim import AdamW
 from transformers import get_scheduler
 from tqdm import tqdm
 
-# This script trains a causal language model using the Hugging Face transformers library.
+# This script trains a language model using the Hugging Face transformers library.
 # It is designed to be run from the command line and configured via a YAML file.
 
 def set_seed(seed):
@@ -73,7 +73,7 @@ def initialize_model_weights(model, init_method='xavier_uniform'):
 
 def main():
     # --- Parse command-line arguments ---
-    parser = argparse.ArgumentParser(description="Train a causal language model.")
+    parser = argparse.ArgumentParser(description="Train a language model.")
     parser.add_argument('--config', type=str, default='config.yaml', help="Path to the configuration file.")
     args = parser.parse_args()
 

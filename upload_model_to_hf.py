@@ -7,7 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 def main():
     """Loads a trained model and tokenizer and pushes them to the Hugging Face Hub."""
-    parser = argparse.ArgumentParser(description="Upload a fine-tuned Causal LM model to Hugging Face Hub")
+    parser = argparse.ArgumentParser(description="Upload a LM model to Hugging Face Hub")
     parser.add_argument("output_dir", type=str, help="Path to the saved model directory")
     args = parser.parse_args()
 
